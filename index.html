@@ -1,0 +1,50 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+function calcular(){
+  val1 = document.getElementById("valor1").value;
+  val2 = document.getElementById("valor2").value;
+  op = document.getElementById("operacion").value;
+
+// hacer llamado a Ajax
+	var xhttp = new XMLHttpRequest();
+  	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("resultadoCalculadora").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "calcular.php?valor1="+val1+"&valor2="+val2+"&operacion="+op, true);
+  xhttp.send();
+
+}
+</script>
+
+
+Valor 1:<input type="text"  id= "valor1"></input><br/>
+Valor 2:<input type="text" id="valor2"></input><br/>
+
+
+Operacion:
+ <select id="operacion">
+<option value="sumar">+<option>
+<option value="restar">-<option>
+<option value="multiplicar">*<option>
+<option value="dividir">/<option>
+ </select><br/>
+
+
+<input type= "button" value="calcular" onclick="calcular()"></input><br/>
+
+<br/>
+<br/>
+<br/>
+<hr/>
+
+<output> id="resultadoCalculadora"></output>
+
+</body>
+
+
+</html>
